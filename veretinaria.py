@@ -1,8 +1,9 @@
+import random
 class Veterinaria:
     def __init__(self):
         self.__mascotas = {}
         self.__historias = {}
-        self.__contador_historias = 0
+        self.__contador_historias =0
         
     def get_mascotas(self):
         return self.__mascotas
@@ -15,11 +16,11 @@ class Veterinaria:
         return "M" + str(numero).zfill(5)
 
     def generar_id_historia(self):
-        self.contador_historias += 1
-        return f"H{self.contador_historias:05d}" #Toma el número de historia, lo convierte a 5 dígitos con ceros delante y le pone una H al inicio
+        self.__contador_historias += 1
+        return f"H{self.__contador_historias:05d}" #Toma el número de historia, lo convierte a 5 dígitos con ceros delante y le pone una H al inicio
 
     def agregar_mascota(self):
-        id_mascota=input("Ingrese el ID de la mascota")
+        id_mascota = self.generar_id_mascota()
         nombre=input("Nombre: ")
         tipo=input("Tipo: ")
         raza=input("Raza: ")
@@ -78,15 +79,15 @@ class Veterinaria:
         else:
             print("Mascota no encontrada. No se puede agregar la historia médica.")
             
-    def mostrar_historias_medicas(self, ):
-        id_mascota = input("Ingrese el ID de la mascota: ")
-        
+    def mostrar_historias_medicas(self, id_mascota):
+        encontro = False
         for historia in self.__historias.values():
             if historia.get_id_mascota() == id_mascota:
                 print(f"ID Historia: {historia.get_id_historia()}, Fecha: {historia.get_fecha()}, Descripción: {historia.get_descripcion()}, Veterinario: {historia.get_veterinario()}")
-        else:
+                encontro = True
+        if not encontro:
             print("No hay historias médicas registradas para esta mascota.")
-    
+            
     def eliminar_historia_medica(self):
         id_historia = input("Ingrese el ID de la historia médica a eliminar: ")
         
@@ -95,7 +96,7 @@ class Veterinaria:
             print(f"Historia médica {id_historia} eliminada exitosamente.")
         else:
             print("Historia médica no encontrada.")
-        
+            
         
 class Mascota:
     def __init__(self, id_mascota,nombre,tipo,raza,edad,propietario,telefono):
@@ -190,7 +191,9 @@ class HistoriaMedica:
         self.__veterinario = veterinario
         
         
-def main(self):
+def main():
+    veterinaria = Veterinaria()
+    
     while True:
         print("\n--- Menú Principal ---")
         print("1. Agregar mascota")
@@ -204,24 +207,24 @@ def main(self):
         opcion = input("Seleccione una opción: ")
         
         if opcion == "1":
-            self.agregar_mascota()
+            veterinaria.agregar_mascota()
         elif opcion == "2":
             id_mascota = input("Ingrese el ID de la mascota a mostrar: ")
-            self.mostrar_mascota(id_mascota)
+            veterinaria.mostrar_mascota(id_mascota)
         elif opcion == "3":
-            self.agregar_historia_medica()
+            veterinaria.agregar_historia_medica()
         elif opcion == "4":
-            id_mascota = input("Ingrese el ID de la mascota para ver historias médicas: ")
-            self.mostrar_historias_medicas(id_mascota)
+            id_mascota = input("Ingrese el ID de la mascota: ")
+            veterinaria.mostrar_historias_medicas(id_mascota)
         elif opcion == "5":
-            self.eliminar_mascota()
+            veterinaria.eliminar_mascota()
         elif opcion == "6":
-            self.eliminar_historia_medica()
+            veterinaria.eliminar_historia_medica()
         elif opcion == "7":
             print("¡Hasta luego!")
             break
         else:
             print("Opción inválida. Intente de nuevo.")
-            
+
 if __name__ == "__main__":
     main()
