@@ -68,11 +68,11 @@ class Paciente:
         return self.__hipertension
     
     def __str__(self):
-        return (f"Paciente: {self.__nombre}, Edad: {self.__edad} años, Sexo: {self.__sexo}, "
-                f"Presión Arterial: {self.__presion_arterial}, Frecuencia Cardíaca: {self.__frecuencia_cardiaca} bpm, "
-                f"Peso: {self.__peso} kg, Altura: {self.__altura} m, "
-                f"Diabetes: {'Sí' if self.__diabetes else 'No'}, Hipertensión: {'Sí' if self.__hipertension else 'No'}")
-        
+        return (f"Paciente: {self.get_nombre()}, Edad: {self.get_edad()} años, Sexo: {self.get_sexo()}, "
+                f"Presión Arterial: {self.get_presion_arterial()}, Frecuencia Cardíaca: {self.get_frecuencia_cardiaca()} bpm, "
+                f"Peso: {self.get_peso()} kg, Altura: {self.get_altura()} m, "
+                f"Diabetes: {'Sí' if self.get_diabetes() else 'No'}, Hipertensión: {'Sí' if self.get_hipertension() else 'No'}")
+
 
 datos_pacientes = [{'Nombre': 'Maria', 'Edad': 58, 'Sexo': 'M', 'Presion Arterial': '107/82 mmHg', 'Frecuencia Cardiaca': 67, 'Peso': 59.5, 'Altura': 1.51, 'Diabetes': False, 'Hipertension': False},
  {'Nombre': 'Juan', 'Edad': 72, 'Sexo': 'H', 'Presion Arterial': '130/88 mmHg', 'Frecuencia Cardiaca': 78, 'Peso': 75.2, 'Altura': 1.73, 'Diabetes': True, 'Hipertension': False},
