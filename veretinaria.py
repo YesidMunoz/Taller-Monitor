@@ -5,6 +5,12 @@ class Veterinaria:
         self.__historias = {}
         self.__contador_historias =0
         
+    def pedir_entero(self,mensaje):
+        while True:
+            try:
+                return int(input(mensaje))
+            except ValueError:
+                print("Por favor, ingrese un número válido.")
     def get_mascotas(self):
         return self.__mascotas
 
@@ -24,9 +30,9 @@ class Veterinaria:
         nombre=input("Nombre: ")
         tipo=input("Tipo: ")
         raza=input("Raza: ")
-        edad=input("Edad: ")
+        edad = self.pedir_entero("Edad: ")
         propietario=input("Propietario: ")
-        telefono=input("Teléfono: ")
+        telefono = self.pedir_entero("Teléfono: ")
         
         mascota=Mascota(id_mascota,nombre,tipo,raza,edad,propietario,telefono)
         self.__mascotas[id_mascota]=mascota
